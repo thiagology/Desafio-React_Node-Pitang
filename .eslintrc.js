@@ -7,10 +7,6 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -21,14 +17,4 @@ module.exports = {
   plugins: [
     'react',
   ],
-  rules: {
-    'react/jsx-filename-extension': [
-      'error',
-      {
-        extensions: ['.js', '.jsx'],
-      },
-    ],
-    'react/prop-types': 0,
-  },
-
 };
