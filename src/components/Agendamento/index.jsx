@@ -1,9 +1,16 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import Page from '../Page';
 
-const Agendamento = () => (
-  <div>
-    Agendamento
-  </div>
-);
+export default function Agendamento() {
+  const [agendamento, setAgendamento] = useState('');
 
-export default Agendamento;
+  const onChange = ({ targed: value }) => {
+    setAgendamento(value);
+  };
+
+  return (
+    <Page title="Agendamentos" />
+
+  );
+}
