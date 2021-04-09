@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Agendamento from './components/Agendamento';
-import Cadastro from './components/Cadastro';
+import Agendamento from './components/FormAgendamento';
+import Cadastro from './components/FormCadastro';
 
 const Routes = () => (
   <BrowserRouter>
