@@ -7,6 +7,7 @@ const DateComponent = ({ startDate, setStartDate, name }) => (
   <DatePicker
     placeholderText="Selecione uma data"
     selected={startDate}
+    dateFormat="dd/MM/yyyy"
     onChange={(date) => setStartDate(date)}
     minDate={new Date()}
     maxDate={addMonths(new Date(), 1)}
