@@ -1,10 +1,52 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import axios from '../../utils/api';
 import Card from './AgendamentoCard';
 
 const AgendamentoList = () => {
+  const [agendamentos, setAgendamentos] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/agendamentos');
+      console.log(response.data.data);
+      setAgendamentos(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    <Card name="patricia" date="123" hour="123" />
+    <Container>
+      <Row>
+        {agendamentos.length ? (
+          agendamentos.map((agendamento, index) => {
+            return (
+              <Col key={index}>
+                <Card
+                  name={agendamento.name}
+                  date={agendamento.date}
+                  hour={agendamento.hour}
+                />
+              </Col>
+
+            );
+          })
+
+        ) : (
+          <span className="empty-state">
+            Não há agendamentos.
+          </span>
+        )}
+      </Row>
+    </Container>
 
   );
 };
