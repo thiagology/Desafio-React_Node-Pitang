@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import AgendamentoList from '../../components/Agendamento/AgendamentoList';
 import Page from '../../components/Page';
+import AgendamentoContextProvider from './AgendamentoContext';
 
 const Agendamentos = () => {
   const history = useHistory();
@@ -20,4 +21,8 @@ const Agendamentos = () => {
   );
 };
 
-export default Agendamentos;
+export default () => (
+  <AgendamentoContextProvider>
+    <Agendamentos />
+  </AgendamentoContextProvider>
+);
