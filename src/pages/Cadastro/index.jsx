@@ -4,7 +4,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import FormikComponent from '../../components/AgendamentoForm';
+import FormikComponent from '../../components/Agendamento/AgendamentoForm';
 import Page from '../../components/Page';
 
 const Agendamento = () => {
