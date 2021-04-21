@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { AgendamentoContext } from '../../pages/Agendamentos/AgendamentoContext';
 import Card from './AgendamentoCard';
