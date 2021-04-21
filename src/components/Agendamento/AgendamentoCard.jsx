@@ -1,5 +1,7 @@
 /* eslint-disable arrow-body-style */
 
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 
@@ -13,11 +15,11 @@ const CardAgendamento = ({
         <Card.Text>
           Seu agendamento está marcado para o dia
           {' '}
-          {date}
+          {moment(date).format('D MMMM YY')}
           {' '}
           às
           {' '}
-          {hour}
+          {moment(hour).format('LT')}
           {' '}
           horas.
         </Card.Text>

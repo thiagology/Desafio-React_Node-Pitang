@@ -80,6 +80,7 @@ const AgendamentoForm = () => (
           <ErrorMessage name="date" component="span" />
           <br />
 
+          <label htmlFor="hour">Hora:  </label>
           <TimePicker
             name="hour"
             value={values.hour}
