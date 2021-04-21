@@ -17,7 +17,7 @@ const Agendamento = () => {
   return (
     <Page title="Cadastro">
       <center>
-        <Button type="button" onClick={handleOnClick}>Ver agendamentos</Button>
+        <Button className="mb-2" type="button" onClick={handleOnClick}>Ver agendamentos</Button>
       </center>
       <FormikComponent />
     </Page>

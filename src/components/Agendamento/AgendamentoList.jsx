@@ -49,6 +49,9 @@ const AgendamentoList = () => {
     console.log('Conclusion');
   };
 
+  const handleChecked = ({ isChecked }) => {
+    console.log(isChecked);
+  };
   return (
     <Container>
       <Row>
@@ -60,8 +63,10 @@ const AgendamentoList = () => {
                   name={agendamento.name}
                   date={agendamento.date}
                   hour={agendamento.hour}
+                  isChecked={agendamento.isChecked}
                   handleCancel={() => handleCancel(agendamento)}
                   handleConclusion={() => handleConclusion}
+                  handleChecked={() => handleChecked(agendamento)}
                 />
               </Col>
 

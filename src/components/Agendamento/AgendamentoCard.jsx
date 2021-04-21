@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable arrow-body-style */
 
 import * as moment from 'moment';
@@ -6,7 +7,12 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 
 const CardAgendamento = ({
-  name, date, hour, handleConclusion, handleCancel,
+  name,
+  date,
+  hour,
+  handleCancel,
+  isCheked,
+  handleChecked,
 }) => {
   return (
     <Card style={{ width: '18rem' }}>
@@ -15,7 +21,7 @@ const CardAgendamento = ({
         <Card.Text>
           Seu agendamento está marcado para o dia
           {' '}
-          {moment(date).format('D MMMM YY')}
+          {moment(date).format('LL')}
           {' '}
           às
           {' '}
@@ -23,13 +29,20 @@ const CardAgendamento = ({
           {' '}
           horas.
         </Card.Text>
-        <Button
-          variant="outline-info"
-          size="sm"
-          onClick={handleConclusion}
-        >
-          Conclusão do atendimento
-        </Button>
+        <div className="form-group form-check">
+          <input type="checkbox" className="form-check-input" id="isChecked" checked={isCheked} onChange={handleChecked()} />
+          <label className="form-check-label" htmlFor="isChecked">Atendimento concluído</label>
+        </div>
+
+        <div className="form-group">
+          <textarea
+            className="form-control"
+            rows="3"
+            placeholder="Conclusão do atendimento"
+            disabled={!isCheked}
+          />
+        </div>
+
         <Button
           className="mt-2"
           variant="outline-danger"
