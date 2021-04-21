@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Container } from 'react-bootstrap';
 
 const Page = ({ title, children }) => (
-  <Container>
+  <Container className="mt-5">
     <Card>
       <Card.Header as="h5">
         <Card.Title className="text-center">{title}</Card.Title>

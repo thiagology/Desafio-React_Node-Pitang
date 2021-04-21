@@ -14,7 +14,9 @@ const Agendamentos = () => {
 
   return (
     <Page title="Agendamentos">
-      <Button type="button" onClick={handleOnClick}>Página de cadastro</Button>
+      <center>
+        <Button type="button" onClick={handleOnClick}>Página de cadastro</Button>
+      </center>
       <AgendamentoList />
     </Page>
 
