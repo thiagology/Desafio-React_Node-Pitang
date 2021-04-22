@@ -45,8 +45,29 @@ const AgendamentoList = () => {
       });
   };
 
-  const handleConclusion = () => {
-    console.log('Conclusion');
+  const handleConclusion = async (event, agendamentoEdit) => {
+    const conclusion = event.target.value;
+
+    const newAgendamentos = agendamentos.map((agendamento) => {
+      if (agendamento._id === agendamentoEdit._id) {
+        return {
+          ...agendamento,
+          conclusion,
+        };
+      }
+      return agendamento;
+    });
+
+    try {
+      await axios.put(`agendamentos/${agendamentoEdit._id}`, { ...agendamentoEdit, conclusion });
+      setAgendamentos(newAgendamentos);
+    } catch (error) {
+      swal({
+        title: 'Erro',
+        text: `${error.message}`,
+        icon: 'warning',
+      });
+    }
   };
 
   const handleChecked = async (event, agendamentoEdit) => {
@@ -86,8 +107,9 @@ const AgendamentoList = () => {
                   date={agendamento.date}
                   hour={agendamento.hour}
                   isChecked={agendamento.isChecked}
+                  conclusion={agendamento.conclusion}
                   handleCancel={() => handleCancel(agendamento)}
-                  handleConclusion={() => handleConclusion(agendamento)}
+                  handleConclusion={(event) => handleConclusion(event, agendamento)}
                   handleChecked={(event) => handleChecked(event, agendamento)}
                 />
               </Col>

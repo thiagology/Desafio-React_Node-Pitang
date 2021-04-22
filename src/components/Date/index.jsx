@@ -16,7 +16,6 @@ const DateComponent = ({
         onChange(name, val);
       }}
       dateFormat="dd/MM/yyyy"
-      locale="pt-BR"
       name={name}
       isClearable
       minDate={new Date()}

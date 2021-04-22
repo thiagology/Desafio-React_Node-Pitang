@@ -14,7 +14,6 @@ const Birth = ({
         onChange(name, val);
       }}
       dateFormat="dd/MM/yyyy"
-      locale="pt-BR"
       name={name}
       isClearable
       minDate={new Date(1921, 1, 1)}

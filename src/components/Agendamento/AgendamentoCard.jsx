@@ -14,6 +14,7 @@ const CardAgendamento = ({
   isChecked,
   handleConclusion,
   handleChecked,
+  conclusion,
 }) => {
   return (
     <Card style={{ width: '18rem' }}>
@@ -47,7 +48,8 @@ const CardAgendamento = ({
             rows="3"
             placeholder="Conclusão do atendimento"
             disabled={!isChecked}
-            onChange={handleConclusion}
+            onChange={(event) => handleConclusion(event)}
+            value={conclusion}
           />
         </div>
 
