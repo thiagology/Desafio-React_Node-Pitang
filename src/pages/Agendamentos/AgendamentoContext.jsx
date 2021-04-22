@@ -4,7 +4,8 @@ import axios from '../../utils/api';
 export const AgendamentoContext = createContext();
 
 export default function AgendamentoContextProvider({ children }) {
-  const [agendamentos, setAgendamentos] = useState([]);
+  const [agendamentosUS, setAgendamentos] = useState([]);
+  const agendamentos = agendamentosUS.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const fetchData = async () => {
     try {

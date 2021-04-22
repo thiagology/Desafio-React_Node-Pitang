@@ -68,10 +68,12 @@ const AgendamentoForm = () => (
           <Field className="m-2" name="name" type="text" placeHolder="Nome" />
           <ErrorMessage className="Form-Error" name="name" component="span" />
           <br />
+          <br />
 
           <label htmlFor="birth">Data de nascimento:  </label>
           <Birth name="birth" value={values.birth} onChange={setFieldValue} />
           <ErrorMessage name="birth" component="span" />
+          <br />
           <br />
 
           <label htmlFor="date">Data da vacina:  </label>
@@ -82,6 +84,7 @@ const AgendamentoForm = () => (
           />
           <ErrorMessage name="date" component="span" />
           <br />
+          <br />
 
           <label htmlFor="hour">Hora:  </label>
           <TimePicker
@@ -90,6 +93,7 @@ const AgendamentoForm = () => (
             onChange={setFieldValue}
           />
           <ErrorMessage name="hour" component="span" />
+          <br />
           <br />
 
           <Button className="m-2" type="submit" name="cadastro">Agendar</Button>

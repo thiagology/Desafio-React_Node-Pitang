@@ -17,7 +17,7 @@ const CardAgendamento = ({
   conclusion,
 }) => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className="cardSch">
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>
