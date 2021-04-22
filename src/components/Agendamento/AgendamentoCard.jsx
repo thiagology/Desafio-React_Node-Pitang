@@ -11,7 +11,8 @@ const CardAgendamento = ({
   date,
   hour,
   handleCancel,
-  isCheked,
+  isChecked,
+  handleConclusion,
   handleChecked,
 }) => {
   return (
@@ -30,8 +31,14 @@ const CardAgendamento = ({
           horas.
         </Card.Text>
         <div className="form-group form-check">
-          <input type="checkbox" className="form-check-input" id="isChecked" checked={isCheked} onChange={handleChecked()} />
-          <label className="form-check-label" htmlFor="isChecked">Atendimento concluído</label>
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="check"
+            checked={isChecked}
+            onChange={(event) => handleChecked(event)}
+          />
+          <label className="form-check-label" htmlFor="check">Atendimento concluído</label>
         </div>
 
         <div className="form-group">
@@ -39,7 +46,8 @@ const CardAgendamento = ({
             className="form-control"
             rows="3"
             placeholder="Conclusão do atendimento"
-            disabled={!isCheked}
+            disabled={!isChecked}
+            onChange={handleConclusion}
           />
         </div>
 

@@ -14,10 +14,10 @@ import Date from '../Date';
 import TimePicker from '../Hour';
 
 const validationSchema = yup?.object().shape({
-  name: yup.string().required('Campo obrigatório'),
-  date: yup.date().required(' Campo obrigatório'),
-  birth: yup.date().required(' Campo obrigatório'),
-  hour: yup.object().required(' Campo obrigatório'),
+  name: yup.string().required(' Campo obrigatório').typeError(' Campo obrigatório'),
+  birth: yup.date().required(' Campo obrigatório').typeError(' Campo obrigatório'),
+  date: yup.date().required(' Campo obrigatório').typeError(' Campo obrigatório'),
+  hour: yup.object().required(' Campo obrigatório').typeError(' Campo obrigatório'),
 });
 
 const AgendamentoForm = () => (

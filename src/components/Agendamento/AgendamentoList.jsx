@@ -49,9 +49,31 @@ const AgendamentoList = () => {
     console.log('Conclusion');
   };
 
-  const handleChecked = ({ isChecked }) => {
-    console.log(isChecked);
+  const handleChecked = async (event, agendamentoEdit) => {
+    const { checked: isChecked } = event.target;
+
+    const newAgendamentos = agendamentos.map((agendamento) => {
+      if (agendamento._id === agendamentoEdit._id) {
+        return {
+          ...agendamento,
+          isChecked,
+        };
+      }
+      return agendamento;
+    });
+
+    try {
+      await axios.put(`agendamentos/${agendamentoEdit._id}`, { ...agendamentoEdit, isChecked });
+      setAgendamentos(newAgendamentos);
+    } catch (error) {
+      swal({
+        title: 'Erro',
+        text: `${error.message}`,
+        icon: 'warning',
+      });
+    }
   };
+
   return (
     <Container>
       <Row>
@@ -65,8 +87,8 @@ const AgendamentoList = () => {
                   hour={agendamento.hour}
                   isChecked={agendamento.isChecked}
                   handleCancel={() => handleCancel(agendamento)}
-                  handleConclusion={() => handleConclusion}
-                  handleChecked={() => handleChecked(agendamento)}
+                  handleConclusion={() => handleConclusion(agendamento)}
+                  handleChecked={(event) => handleChecked(event, agendamento)}
                 />
               </Col>
 
