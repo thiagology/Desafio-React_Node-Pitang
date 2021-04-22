@@ -1,11 +1,9 @@
 /* eslint-disable arrow-body-style */
-
-import { addMonths } from 'date-fns';
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DateComponent = ({
+const Birth = ({
   name, value, onChange,
 }) => {
   return (
@@ -19,10 +17,10 @@ const DateComponent = ({
       locale="pt-BR"
       name={name}
       isClearable
-      minDate={new Date()}
-      maxDate={addMonths(new Date(), 1)}
+      minDate={new Date(1921, 1, 1)}
+      maxDate={new Date()}
     />
   );
 };
 
-export default DateComponent;
+export default Birth;

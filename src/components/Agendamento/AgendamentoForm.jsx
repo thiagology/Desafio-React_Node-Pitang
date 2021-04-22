@@ -9,6 +9,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import * as yup from 'yup';
 import axios from '../../utils/api';
+import Birth from '../Birth';
 import Date from '../Date';
 import TimePicker from '../Hour';
 
@@ -30,16 +31,20 @@ const AgendamentoForm = () => (
       setTimeout(async () => {
         try {
           await axios.post('/agendamentos', {
-            name: values.name, date: values.date, bith: values.birth, hour: values.hour
+            name: values.name,
+            date: values.date,
+            birth: values.birth,
+            hour: values.hour
           });
           swal({
             title: 'Agendamento registrado!',
             icon: 'success',
           });
         } catch (error) {
+          console.log(error);
           swal({
             title: 'Erro',
-            text: `${error.message}`,
+            text: `${error.response.data.message}`,
             icon: 'warning',
           });
         }
@@ -65,7 +70,7 @@ const AgendamentoForm = () => (
           <br />
 
           <label htmlFor="birth">Data de nascimento:  </label>
-          <Date name="birth" value={values.birth} onChange={setFieldValue} />
+          <Birth name="birth" value={values.birth} onChange={setFieldValue} />
           <ErrorMessage name="birth" component="span" />
           <br />
 
@@ -74,8 +79,6 @@ const AgendamentoForm = () => (
             name="date"
             value={values.date}
             onChange={setFieldValue}
-            // minDate={() => new Date()}
-            // maxDate={() => addMonths(new Date(), 1)}
           />
           <ErrorMessage name="date" component="span" />
           <br />
