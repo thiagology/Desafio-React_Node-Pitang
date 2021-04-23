@@ -11,7 +11,7 @@
 }
 
 .cardSch{
-    background-color: rgba(255, 255, 255, 0.849);
+    background-color: rgba(255, 255, 255, 0.829);
     color: black;
     font-family: "Times New Roman", "Georgia", serif;
     border-radius: 10px;
@@ -23,6 +23,37 @@
     color: rgb(255, 255, 255);
     letter-spacing: 1px;
     font-family: "Times New Roman", "Georgia", serif;
-    //font-weight: bold;
+}
+
+.buttonPage{
+    margin-bottom: 20px;
+    font-size: 17px;
+    background-color: #20b40c;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+}
+
+body{
+    background-color: rgb(236, 253, 255);
+}
+
+.header {
+    padding: 10px 12px;
+    background-color:rgb(53, 148, 74);
+    color: #f1f1f1;
+    font-family: "Times New Roman", "Georgia", serif;
+    .header__image{
+        width: 6%;
+        margin-left: 45%;
+        margin-right: auto;
+    }
     
+}
+
+
+.cadastroPage__image{
+    margin-left: 65%;
+    margin-right: auto;
+    width: 30%;
 }

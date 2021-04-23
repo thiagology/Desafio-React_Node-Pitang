@@ -22,6 +22,54 @@ const validationSchema = yup?.object().shape({
   hour: yup.object().required(' *Campo obrigatório').typeError(' *Campo obrigatório'),
 });
 
+const onSubmit = (values, { setSubmitting }) => {
+  setTimeout(async () => {
+    swal({
+      title: 'Confirmar dados',
+      text: `Nome: ${values.name}
+
+            Idade: ${moment().diff(values.birth, 'years')}
+
+            Data da vacina: ${moment(values.date).format('LL')}
+
+            Hora da vacina: ${moment(values.hour).format('LT')} `,
+      icon: 'warning',
+      buttons: ['Cancelar', 'Confirmar'],
+      dangerMode: true,
+    })
+      . then(async (isSubimit) => {
+        if (isSubimit) {
+          try {
+            await axios.post('/agendamentos', {
+              name: values.name,
+              date: values.date,
+              birth: values.birth,
+              hour: values.hour
+            });
+            swal({
+              title: 'Agendamento registrado!',
+              text: `Nome: ${values.name}
+
+              Idade: ${moment().diff(values.birth, 'years')}
+
+              Data da vacina: ${moment(values.date).format('LL')}
+
+              Hora da vacina: ${moment(values.hour).format('LT')} `,
+              icon: 'success',
+            });
+          } catch (error) {
+            swal({
+              title: 'Erro',
+              text: `${error.response.data.message}`,
+              icon: 'warning',
+            });
+          }
+        }
+      });
+    setSubmitting(false);
+  }, 400);
+};
+
 const AgendamentoForm = () => (
   <Formik
     key="formik"
@@ -29,53 +77,7 @@ const AgendamentoForm = () => (
       name: '', date: '', birth: '', hour: ''
     }}
     validationSchema={validationSchema}
-    onSubmit={(values, { setSubmitting }) => {
-      setTimeout(async () => {
-        swal({
-          title: 'Confirmar dados',
-          text: `Nome: ${values.name}
-
-                Idade: ${moment().diff(values.birth, 'years')}
-
-                Data da vacina: ${moment(values.date).format('LL')}
-
-                Hora da vacina: ${moment(values.hour).format('LT')} `,
-          icon: 'warning',
-          buttons: ['Cancelar', 'Confirmar'],
-          dangerMode: true,
-        })
-          . then(async (isSubimit) => {
-            if (isSubimit) {
-              try {
-                await axios.post('/agendamentos', {
-                  name: values.name,
-                  date: values.date,
-                  birth: values.birth,
-                  hour: values.hour
-                });
-                swal({
-                  title: 'Agendamento registrado!',
-                  text: `Nome: ${values.name}
-
-                  Idade: ${moment().diff(values.birth, 'years')}
-  
-                  Data da vacina: ${moment(values.date).format('LL')}
-  
-                  Hora da vacina: ${moment(values.hour).format('LT')} `,
-                  icon: 'success',
-                });
-              } catch (error) {
-                swal({
-                  title: 'Erro',
-                  text: `${error.response.data.message}`,
-                  icon: 'warning',
-                });
-              }
-            }
-          });
-        setSubmitting(false);
-      }, 400);
-    }}
+    onSubmit={(values, { setSubmitting }) => onSubmit(values, { setSubmitting })}
   >
     {(props) => {
       const {
@@ -90,14 +92,31 @@ const AgendamentoForm = () => (
 
         <Form className="Form" onSubmit={handleSubmit} autocomplete="off">
           <label htmlFor="name">Nome Completo: </label>
-          <Field className="m-2" name="name" type="text" placeHolder="Nome" />
-          <ErrorMessage className="Form-Error" name="name" component="span" />
+          <Field
+            name="name"
+            type="text"
+            placeHolder="Nome"
+          />
+          <ErrorMessage
+            className="Form-Error"
+            name="name"
+            component="span"
+            style={{ color: 'red' }}
+          />
           <br />
           <br />
 
           <label htmlFor="birth">Data de nascimento:  </label>
-          <Birth name="birth" value={values.birth} onChange={setFieldValue} />
-          <ErrorMessage name="birth" component="span" />
+          <Birth
+            name="birth"
+            value={values.birth}
+            onChange={setFieldValue}
+          />
+          <ErrorMessage
+            name="birth"
+            component="span"
+            style={{ color: 'red' }}
+          />
           <br />
           <br />
 
@@ -107,7 +126,11 @@ const AgendamentoForm = () => (
             value={values.date}
             onChange={setFieldValue}
           />
-          <ErrorMessage name="date" component="span" />
+          <ErrorMessage
+            name="date"
+            component="span"
+            style={{ color: 'red' }}
+          />
           <br />
           <br />
 
@@ -117,7 +140,11 @@ const AgendamentoForm = () => (
             value={values.hour}
             onChange={setFieldValue}
           />
-          <ErrorMessage name="hour" component="span" />
+          <ErrorMessage
+            name="hour"
+            component="span"
+            style={{ color: 'red' }}
+          />
           <br />
           <br />
 

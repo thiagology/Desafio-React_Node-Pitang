@@ -15,11 +15,19 @@ const Agendamento = () => {
   };
 
   return (
-    <Page title="Cadastro">
+    <Page title="Cadastro" className="cadastroPage">
       <center>
-        <Button className="mb-2" type="button" onClick={handleOnClick}>Ver agendamentos</Button>
+        <Button
+          className="buttonPage"
+          variant="success"
+          type="button"
+          onClick={handleOnClick}
+        >
+          Ver agendamentos
+        </Button>
       </center>
       <FormikComponent />
+      <img className="cadastroPage__image" src="/vacinaIcon.png" alt="Vacina Icon" />
     </Page>
   );
 };
