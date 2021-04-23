@@ -104,7 +104,6 @@ const AgendamentoForm = () => (
             style={{ color: 'red' }}
           />
           <br />
-          <br />
 
           <label htmlFor="birth">Data de nascimento:  </label>
           <Birth
@@ -118,7 +117,6 @@ const AgendamentoForm = () => (
             component="span"
             style={{ color: 'red' }}
           />
-          <br />
           <br />
 
           <label htmlFor="date">Data da vacinação:  </label>
@@ -134,7 +132,6 @@ const AgendamentoForm = () => (
             style={{ color: 'red' }}
           />
           <br />
-          <br />
 
           <label htmlFor="hour">Hora:  </label>
           <TimePicker
@@ -148,7 +145,6 @@ const AgendamentoForm = () => (
             component="span"
             style={{ color: 'red' }}
           />
-          <br />
           <br />
 
           <Button className="buttonForm" type="submit" name="cadastro">Agendar</Button>

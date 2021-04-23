@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable arrow-body-style */
 import swal from '@sweetalert/with-react';
 import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -99,23 +98,21 @@ const AgendamentoList = () => {
     <Container>
       <Row>
         {agendamentos.length ? (
-          agendamentos.map((agendamento, index) => {
-            return (
-              <Col key={index}>
-                <Card
-                  name={agendamento.name}
-                  date={agendamento.date}
-                  hour={agendamento.hour}
-                  isChecked={agendamento.isChecked}
-                  conclusion={agendamento.conclusion}
-                  handleCancel={() => handleCancel(agendamento)}
-                  handleConclusion={(event) => handleConclusion(event, agendamento)}
-                  handleChecked={(event) => handleChecked(event, agendamento)}
-                />
-              </Col>
+          agendamentos.map((agendamento, index) => (
+            <Col key={index}>
+              <Card
+                name={agendamento.name}
+                date={agendamento.date}
+                hour={agendamento.hour}
+                isChecked={agendamento.isChecked}
+                conclusion={agendamento.conclusion}
+                handleCancel={() => handleCancel(agendamento)}
+                handleConclusion={(event) => handleConclusion(event, agendamento)}
+                handleChecked={(event) => handleChecked(event, agendamento)}
+              />
+            </Col>
 
-            );
-          })
+          ))
 
         ) : (
           <span className="empty-state">

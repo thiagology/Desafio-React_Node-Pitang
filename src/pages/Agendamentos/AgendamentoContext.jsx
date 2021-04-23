@@ -6,6 +6,8 @@ export const AgendamentoContext = createContext();
 
 export default function AgendamentoContextProvider({ children }) {
   const [agendamentosUS, setAgendamentos] = useState([]);
+
+  // Ordena os agendamentos do menor ao maior
   const agendamentos = agendamentosUS.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const fetchData = async () => {

@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable object-curly-newline */
-
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
@@ -16,16 +13,14 @@ const Agendamento = () => {
 
   return (
     <Page title="Cadastro" className="cadastroPage">
-      <center>
-        <Button
-          className="buttonPage"
-          variant="success"
-          type="button"
-          onClick={handleOnClick}
-        >
-          Ver agendamentos
-        </Button>
-      </center>
+      <Button
+        className="buttonPage"
+        variant="success"
+        type="button"
+        onClick={handleOnClick}
+      >
+        Ver agendamentos
+      </Button>
       <FormikComponent />
       <img className="cadastroPage__image" src="/vacinaIcon.png" alt="Vacina Icon" />
     </Page>
