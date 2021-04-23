@@ -5,6 +5,8 @@ import swal from '@sweetalert/with-react';
 import {
   ErrorMessage, Field, Form, Formik
 } from 'formik';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import * as yup from 'yup';
@@ -14,10 +16,10 @@ import Date from '../Date';
 import TimePicker from '../Hour';
 
 const validationSchema = yup?.object().shape({
-  name: yup.string().required(' Campo obrigatório').typeError(' Campo obrigatório'),
-  birth: yup.date().required(' Campo obrigatório').typeError(' Campo obrigatório'),
-  date: yup.date().required(' Campo obrigatório').typeError(' Campo obrigatório'),
-  hour: yup.object().required(' Campo obrigatório').typeError(' Campo obrigatório'),
+  name: yup.string().required(' *Campo obrigatório').typeError(' *Campo obrigatório'),
+  birth: yup.date().required(' *Campo obrigatório').typeError(' *Campo obrigatório'),
+  date: yup.date().required(' *Campo obrigatório').typeError(' *Campo obrigatório'),
+  hour: yup.object().required(' *Campo obrigatório').typeError(' *Campo obrigatório'),
 });
 
 const AgendamentoForm = () => (
@@ -29,25 +31,48 @@ const AgendamentoForm = () => (
     validationSchema={validationSchema}
     onSubmit={(values, { setSubmitting }) => {
       setTimeout(async () => {
-        try {
-          await axios.post('/agendamentos', {
-            name: values.name,
-            date: values.date,
-            birth: values.birth,
-            hour: values.hour
+        swal({
+          title: 'Confirmar dados',
+          text: `Nome: ${values.name}
+
+                Idade: ${moment().diff(values.birth, 'years')}
+
+                Data da vacina: ${moment(values.date).format('LL')}
+
+                Hora da vacina: ${moment(values.hour).format('LT')} `,
+          icon: 'warning',
+          buttons: ['Cancelar', 'Confirmar'],
+          dangerMode: true,
+        })
+          . then(async (isSubimit) => {
+            if (isSubimit) {
+              try {
+                await axios.post('/agendamentos', {
+                  name: values.name,
+                  date: values.date,
+                  birth: values.birth,
+                  hour: values.hour
+                });
+                swal({
+                  title: 'Agendamento registrado!',
+                  text: `Nome: ${values.name}
+
+                  Idade: ${moment().diff(values.birth, 'years')}
+  
+                  Data da vacina: ${moment(values.date).format('LL')}
+  
+                  Hora da vacina: ${moment(values.hour).format('LT')} `,
+                  icon: 'success',
+                });
+              } catch (error) {
+                swal({
+                  title: 'Erro',
+                  text: `${error.response.data.message}`,
+                  icon: 'warning',
+                });
+              }
+            }
           });
-          swal({
-            title: 'Agendamento registrado!',
-            icon: 'success',
-          });
-        } catch (error) {
-          console.log(error);
-          swal({
-            title: 'Erro',
-            text: `${error.response.data.message}`,
-            icon: 'warning',
-          });
-        }
         setSubmitting(false);
       }, 400);
     }}
