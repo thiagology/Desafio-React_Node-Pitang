@@ -13,14 +13,16 @@ const Agendamento = () => {
 
   return (
     <Page title="Cadastro" className="cadastroPage">
-      <Button
-        className="buttonPage"
-        variant="success"
-        type="button"
-        onClick={handleOnClick}
-      >
-        Ver agendamentos
-      </Button>
+      <center>
+        <Button
+          className="buttonPage"
+          variant="success"
+          type="button"
+          onClick={handleOnClick}
+        >
+          Ver agendamentos
+        </Button>
+      </center>
       <FormikComponent />
       <img className="cadastroPage__image" src="/vacinaIcon.png" alt="Vacina Icon" />
     </Page>

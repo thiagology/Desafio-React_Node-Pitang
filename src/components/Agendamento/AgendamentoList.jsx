@@ -5,6 +5,7 @@ import React, { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { AgendamentoContext } from '../../pages/Agendamentos/AgendamentoContext';
 import axios from '../../utils/api';
+import Loading from '../Loading';
 import Card from './AgendamentoCard';
 
 const AgendamentoList = () => {
@@ -116,7 +117,7 @@ const AgendamentoList = () => {
 
         ) : (
           <span className="empty-state">
-            Não há agendamentos.
+            <Loading />
           </span>
         )}
       </Row>

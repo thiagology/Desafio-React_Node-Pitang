@@ -6,17 +6,20 @@ export const AgendamentoContext = createContext();
 
 export default function AgendamentoContextProvider({ children }) {
   const [agendamentosUS, setAgendamentos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // Ordena os agendamentos do menor ao maior
-  const agendamentos = agendamentosUS.sort((a, b) => new Date(a.date) - new Date(b.date));
+  // Ordena os agendamentos pela data
+  const agendamentos = agendamentosUS.sort((a, b) => new Date(a.date) - new Date(b.date)).sort();
 
   const fetchData = async () => {
+    setLoading(true);
     try {
       const response = await axios.get('/agendamentos');
       setAgendamentos(response.data.data);
     } catch (error) {
       swal(error.message);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -24,7 +27,7 @@ export default function AgendamentoContextProvider({ children }) {
   }, []);
 
   return (
-    <AgendamentoContext.Provider value={[agendamentos, setAgendamentos, fetchData]}>
+    <AgendamentoContext.Provider value={[agendamentos, setAgendamentos, loading, fetchData]}>
       {children}
     </AgendamentoContext.Provider>
   );
