@@ -1,9 +1,8 @@
-/* eslint-disable comma-dangle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import swal from '@sweetalert/with-react';
 import {
-  ErrorMessage, Field, Form, Formik
+  ErrorMessage, Field, Form, Formik,
 } from 'formik';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
@@ -44,7 +43,7 @@ const onSubmit = (values, { setSubmitting }) => {
               name: values.name,
               date: values.date,
               birth: values.birth,
-              hour: values.hour
+              hour: values.hour,
             });
             swal({
               title: 'Agendamento registrado!',
@@ -74,7 +73,7 @@ const AgendamentoForm = () => (
   <Formik
     key="formik"
     initialValues={{
-      name: '', date: '', birth: '', hour: ''
+      name: '', date: '', birth: '', hour: '',
     }}
     validationSchema={validationSchema}
     onSubmit={(values, { setSubmitting }) => onSubmit(values, { setSubmitting })}
@@ -93,6 +92,7 @@ const AgendamentoForm = () => (
         <Form className="Form" onSubmit={handleSubmit} autocomplete="off">
           <label htmlFor="name">Nome Completo: </label>
           <Field
+            className="inputForm"
             name="name"
             type="text"
             placeHolder="Nome"
@@ -108,6 +108,7 @@ const AgendamentoForm = () => (
 
           <label htmlFor="birth">Data de nascimento:  </label>
           <Birth
+            className="inputForm"
             name="birth"
             value={values.birth}
             onChange={setFieldValue}
@@ -120,8 +121,9 @@ const AgendamentoForm = () => (
           <br />
           <br />
 
-          <label htmlFor="date">Data da vacina:  </label>
+          <label htmlFor="date">Data da vacinação:  </label>
           <Date
+            className="inputForm"
             name="date"
             value={values.date}
             onChange={setFieldValue}
@@ -136,6 +138,7 @@ const AgendamentoForm = () => (
 
           <label htmlFor="hour">Hora:  </label>
           <TimePicker
+            className="inputForm"
             name="hour"
             value={values.hour}
             onChange={setFieldValue}
@@ -148,8 +151,8 @@ const AgendamentoForm = () => (
           <br />
           <br />
 
-          <Button className="m-2" type="submit" name="cadastro">Agendar</Button>
-          <Button className="m-2" name="limpar" onClick={handleReset} disabled={!dirty || isSubmitting}>Limpar campos</Button>
+          <Button className="buttonForm" type="submit" name="cadastro">Agendar</Button>
+          <Button className="buttonForm" name="limpar" onClick={handleReset} disabled={!dirty || isSubmitting}>Limpar campos</Button>
         </Form>
       );
     }}

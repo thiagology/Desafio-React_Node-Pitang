@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import DatePicker from 'react-datepicker';
+import ptBR from 'date-fns/locale/pt-BR';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Birth = ({
@@ -18,6 +19,7 @@ const Birth = ({
       isClearable
       minDate={new Date(1921, 1, 1)}
       maxDate={new Date()}
+      locale={ptBR}
     />
   );
 };

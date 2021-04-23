@@ -34,14 +34,32 @@
     text-align: center;
 }
 
+.buttonForm{
+    margin-left: 20px;
+    font-size: 17px;
+    color: white;
+    padding: 10px 21px;
+    text-align: center;
+}
+
+.inputForm{
+    margin-left: 2%;
+}
+
+label{
+    margin-right: 5px;
+}
+
+
 body{
-    background-color: rgb(236, 253, 255);
+    background-color: rgb(192, 245, 204);
 }
 
 .header {
     padding: 10px 12px;
     background-color:rgb(53, 148, 74);
     color: #f1f1f1;
+    border-radius: 10px;
     font-family: "Times New Roman", "Georgia", serif;
     .header__image{
         width: 6%;
@@ -53,6 +71,7 @@ body{
 
 
 .cadastroPage__image{
+    margin-top: 4%;
     margin-left: 65%;
     margin-right: auto;
     width: 30%;

@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 
 import { addMonths } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -20,6 +21,7 @@ const DateComponent = ({
       isClearable
       minDate={new Date()}
       maxDate={addMonths(new Date(), 1)}
+      locale={ptBR}
     />
   );
 };
