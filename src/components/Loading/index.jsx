@@ -4,7 +4,7 @@ import { AgendamentoContext } from '../../pages/Agendamentos/AgendamentoContext'
 
 export default function Loading() {
   const loading = useContext(AgendamentoContext);
-  if (loading) {
+  if (loading === true) {
     return (
       <Spinner animation="border" role="status" />
     );
